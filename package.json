@@ -2,7 +2,7 @@
   "name": "cabinet-quote",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://cjlaflamme1.github.io/cabinet-quote",
+  "homepage": "https://cjlaflamme1.github.io/lostarrow-quote",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
