@@ -10,7 +10,7 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { currentStep, state } = useQuote();
+  const { currentStep } = useQuote();
   const currentStepConfig = STEPS[currentStep];
 
   return (
@@ -24,9 +24,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <h1 className="text-xl font-bold text-primary">
                   Cabinet Quote Calculator
                 </h1>
-                <div className="text-xs text-secondary">
-                  Internal Rate: ${state.pricePerFoot}/ft
-                </div>
               </div>
               <div className="text-sm text-secondary">
                 Step {currentStep + 1} of {STEPS.length}

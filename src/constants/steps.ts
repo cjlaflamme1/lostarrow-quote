@@ -43,12 +43,6 @@ export const STEPS: StepConfig[] = [
     required: true
   },
   {
-    id: 'door-type',
-    title: 'Door Type',
-    description: 'Solid slab or center panel doors',
-    required: true
-  },
-  {
     id: 'panel-type',
     title: 'Panel Type',
     description: 'Raised or flat center panel',

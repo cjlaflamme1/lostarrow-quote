@@ -60,26 +60,6 @@ export const WallCabinetLengthQuestion: React.FC = () => {
           Wall cabinets are typically shorter than base cabinet runs due to windows, range hoods, etc.
         </div>
       </div>
-
-      {/* Visual helper showing both base and wall cabinet costs */}
-      {(state.baseCabinetLength > 0 || state.wallCabinetLength > 0) && (
-        <div className="mt-4 p-3 bg-blue-50 rounded-md border border-blue-200">
-          <div className="text-sm font-medium text-blue-900 mb-2">
-            Running Total:
-          </div>
-          <div className="space-y-1 text-sm text-blue-800">
-            {state.baseCabinetLength > 0 && (
-              <div>Base cabinets: {state.baseCabinetLength} ft × ${state.pricePerFoot}/ft = ${(state.baseCabinetLength * state.pricePerFoot).toLocaleString()}</div>
-            )}
-            {state.wallCabinetLength > 0 && (
-              <div>Wall cabinets: {state.wallCabinetLength} ft × ${state.pricePerFoot}/ft = ${(state.wallCabinetLength * state.pricePerFoot).toLocaleString()}</div>
-            )}
-            <div className="border-t border-blue-300 pt-1 font-medium">
-              Subtotal: ${((state.baseCabinetLength + state.wallCabinetLength) * state.pricePerFoot).toLocaleString()}
-            </div>
-          </div>
-        </div>
-      )}
     </QuestionWrapper>
   );
 }; 

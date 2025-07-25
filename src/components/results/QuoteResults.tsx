@@ -133,16 +133,9 @@ export const QuoteResults: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div>J. After door type ({state.doorType}):</div>
+              <div>J. After panel type ({state.panelType}):</div>
               <div className="font-medium">{formatCurrency(calc.J)}</div>
             </div>
-            
-            {state.doorType === 'center-panel' && (
-              <div className="grid grid-cols-2 gap-4">
-                <div>K. After panel type ({state.panelType}):</div>
-                <div className="font-medium">{formatCurrency(calc.K)}</div>
-              </div>
-            )}
             
             <div className="grid grid-cols-2 gap-4">
               <div>L. After profile ({state.doorProfile}):</div>
@@ -179,11 +172,8 @@ export const QuoteResults: React.FC = () => {
       <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
         <h4 className="font-semibold text-yellow-900 mb-2">Important Notes:</h4>
         <ul className="text-sm text-yellow-800 space-y-1">
-          <li>• This is an estimate based on standard cabinet construction</li>
-          <li>• Actual costs may vary based on materials, hardware, and installation complexity</li>
-          <li>• Estimate includes cabinet boxes, doors, and basic installation</li>
-          <li>• Additional costs may include: countertops, hardware, electrical, plumbing</li>
-          <li>• Final quote should be confirmed with detailed measurements and specifications</li>
+          <li>Actual price will vary</li>
+          <li>Delivery and installation not included</li>
         </ul>
       </div>
 

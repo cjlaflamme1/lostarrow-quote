@@ -20,7 +20,6 @@ const initialState: QuoteState = {
   islandLength: 0,
   islandWidth: 0,
   cabinetFinish: 'painted',
-  doorType: 'solid-slab',
   panelType: 'raised',
   doorProfile: 'shaker',
   glassDoorsCount: 0,
@@ -55,9 +54,6 @@ const quoteReducer = (state: QuoteState, action: QuoteAction): QuoteState => {
       break;
     case 'SET_CABINET_FINISH':
       newState = { ...state, cabinetFinish: action.payload };
-      break;
-    case 'SET_DOOR_TYPE':
-      newState = { ...state, doorType: action.payload };
       break;
     case 'SET_PANEL_TYPE':
       newState = { ...state, panelType: action.payload };

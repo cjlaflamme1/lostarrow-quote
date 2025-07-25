@@ -8,7 +8,6 @@ import { WallCabinetHeightQuestion } from './components/questions/WallCabinetHei
 import { TallCabinetsQuestion } from './components/questions/TallCabinetsQuestion';
 import { IslandPeninsulaQuestion } from './components/questions/IslandPeninsulaQuestion';
 import { CabinetFinishQuestion } from './components/questions/CabinetFinishQuestion';
-import { DoorTypeQuestion } from './components/questions/DoorTypeQuestion';
 import { PanelTypeQuestion } from './components/questions/PanelTypeQuestion';
 import { DoorProfileQuestion } from './components/questions/DoorProfileQuestion';
 import { GlassDoorsQuestion } from './components/questions/GlassDoorsQuestion';
@@ -35,14 +34,12 @@ const QuoteApp: React.FC = () => {
       case 5:
         return <CabinetFinishQuestion />;
       case 6:
-        return <DoorTypeQuestion />;
-      case 7:
         return <PanelTypeQuestion />;
-      case 8:
+      case 7:
         return <DoorProfileQuestion />;
-      case 9:
+      case 8:
         return <GlassDoorsQuestion />;
-      case 10:
+      case 9:
         return <QuoteResults />;
       default:
         return (

@@ -26,12 +26,6 @@ export const CabinetFinishQuestion: React.FC = () => {
     dispatch({ type: 'SET_CABINET_FINISH', payload: value });
   };
 
-  const selectedOption = FINISH_OPTIONS.find(option => option.value === state.cabinetFinish);
-  
-  // Calculate current subtotal for finish calculation
-  const baseSubtotal = state.calculatedValues?.H || 0;
-  const finishAdjustedCost = selectedOption ? baseSubtotal * selectedOption.multiplier : baseSubtotal;
-
   return (
     <QuestionWrapper
       title="Cabinet Finish"
@@ -53,11 +47,8 @@ export const CabinetFinishQuestion: React.FC = () => {
               className="radio-input"
             />
             <div className="flex-1">
-              <div className="radio-label flex items-center justify-between">
+              <div className="radio-label">
                 <span>{option.label}</span>
-                <span className="text-sm text-secondary">
-                  ×{option.multiplier} multiplier
-                </span>
               </div>
               <div className="radio-description">
                 {option.description}
@@ -70,41 +61,21 @@ export const CabinetFinishQuestion: React.FC = () => {
         ))}
       </div>
 
-      {/* Cost calculation preview */}
-      {baseSubtotal > 0 && selectedOption && (
-        <div className="mt-4 p-3 bg-blue-50 rounded-md border border-blue-200">
-          <div className="text-sm font-medium text-blue-900 mb-2">
-            Finish Adjustment:
-          </div>
-          <div className="space-y-1 text-sm text-blue-800">
-            <div>Cabinet subtotal: ${baseSubtotal.toLocaleString()}</div>
-            <div>Finish multiplier: ×{selectedOption.multiplier} ({selectedOption.label.toLowerCase()})</div>
-            <div className="border-t border-blue-300 pt-1 font-medium">
-              After finish: ${finishAdjustedCost.toLocaleString()}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Visual examples */}
       <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
           <div className="text-sm font-medium text-gray-900 mb-2">✨ Painted Finish Benefits:</div>
           <ul className="text-sm text-gray-700 space-y-1">
-            <li>• Any color you want</li>
-            <li>• Modern, clean appearance</li>
-            <li>• Hides wood imperfections</li>
-            <li>• Easy to match décor</li>
+            <li>Any color you want</li>
+            <li>Modern, clean appearance</li>
           </ul>
         </div>
         
         <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
           <div className="text-sm font-medium text-gray-900 mb-2">🌿 Clear/Stain Benefits:</div>
           <ul className="text-sm text-gray-700 space-y-1">
-            <li>• Natural wood beauty</li>
-            <li>• Timeless appeal</li>
-            <li>• Lower cost option</li>
-            <li>• Shows wood character</li>
+            <li>Natural wood beauty</li>
+            <li>Timeless appeal</li>
           </ul>
         </div>
       </div>

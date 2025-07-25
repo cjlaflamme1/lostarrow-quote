@@ -33,12 +33,6 @@ export const DoorProfileQuestion: React.FC = () => {
     dispatch({ type: 'SET_DOOR_PROFILE', payload: value });
   };
 
-  const selectedOption = PROFILE_OPTIONS.find(option => option.value === state.doorProfile);
-  
-  // Calculate current cost after panel type for profile calculation
-  const panelTypeAdjustedCost = state.calculatedValues?.K || 0;
-  const profileAdjustedCost = selectedOption ? panelTypeAdjustedCost * selectedOption.multiplier : panelTypeAdjustedCost;
-
   return (
     <QuestionWrapper
       title="Door Profile"
@@ -60,11 +54,8 @@ export const DoorProfileQuestion: React.FC = () => {
               className="radio-input"
             />
             <div className="flex-1">
-              <div className="radio-label flex items-center justify-between">
+              <div className="radio-label">
                 <span>{option.label}</span>
-                <span className="text-sm text-secondary">
-                  ×{option.multiplier} multiplier
-                </span>
               </div>
               <div className="radio-description">
                 {option.description}
@@ -77,37 +68,21 @@ export const DoorProfileQuestion: React.FC = () => {
         ))}
       </div>
 
-      {/* Cost calculation preview */}
-      {panelTypeAdjustedCost > 0 && selectedOption && (
-        <div className="mt-4 p-3 bg-blue-50 rounded-md border border-blue-200">
-          <div className="text-sm font-medium text-blue-900 mb-2">
-            Profile Adjustment:
-          </div>
-          <div className="space-y-1 text-sm text-blue-800">
-            <div>After panel type: ${panelTypeAdjustedCost.toLocaleString()}</div>
-            <div>Profile multiplier: ×{selectedOption.multiplier} ({selectedOption.label.toLowerCase()})</div>
-            <div className="border-t border-blue-300 pt-1 font-medium">
-              Door cost total: ${profileAdjustedCost.toLocaleString()}
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Style guide */}
       <div className="mt-4 grid grid-cols-1 gap-4">
         <div className="p-3 bg-gray-50 rounded-md border border-gray-200">
           <div className="text-sm font-medium text-gray-900 mb-2">🎨 Profile Style Guide:</div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm text-gray-700">
             <div>
-              <div className="font-medium mb-1">□ Shaker (Standard)</div>
+              <div className="font-medium mb-1">Shaker (Standard)</div>
               <div className="text-xs">Most popular, works with any décor, clean lines</div>
             </div>
             <div>
-              <div className="font-medium mb-1">◢ Profile (Detailed)</div>
+              <div className="font-medium mb-1">Profile (Detailed)</div>
               <div className="text-xs">Decorative edges, traditional feel, elegant</div>
             </div>
             <div>
-              <div className="font-medium mb-1">▬ Skinny Shaker (Modern)</div>
+              <div className="font-medium mb-1">Skinny Shaker (Modern)</div>
               <div className="text-xs">Thin frames, contemporary, sleek appearance</div>
             </div>
           </div>
@@ -120,11 +95,9 @@ export const DoorProfileQuestion: React.FC = () => {
           💡 Recommendation based on your choices:
         </div>
         <div className="text-sm text-green-800">
-          {state.doorType === 'solid-slab' 
-            ? "With solid slab doors, Shaker or Skinny Shaker profiles work beautifully for a clean, modern look."
-            : state.panelType === 'raised' 
-              ? "Raised panels pair excellently with Profile edges for a traditional, formal appearance."
-              : "Flat panels look great with any profile - Shaker for timeless appeal, Skinny Shaker for modern style."
+          {state.panelType === 'raised' 
+            ? "Raised panels pair excellently with Profile edges for a traditional, formal appearance."
+            : "Flat panels look great with any profile - Shaker for timeless appeal, Skinny Shaker for modern style."
           }
         </div>
       </div>

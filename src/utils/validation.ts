@@ -24,16 +24,13 @@ export const validateStep = (step: number, state: QuoteState): boolean => {
     case 5: // Cabinet finish
       return ['painted', 'clear-stain'].includes(state.cabinetFinish);
     
-    case 6: // Door type
-      return ['solid-slab', 'center-panel'].includes(state.doorType);
+    case 6: // Panel type
+      return ['raised', 'flat'].includes(state.panelType);
     
-    case 7: // Panel type (skip validation if solid slab doors)
-      return state.doorType === 'solid-slab' || ['raised', 'flat'].includes(state.panelType);
-    
-    case 8: // Door profile
+    case 7: // Door profile
       return ['shaker', 'profile', 'skinny-shaker'].includes(state.doorProfile);
     
-    case 9: // Glass doors
+    case 8: // Glass doors
       return state.glassDoorsCount >= 0; // Can be 0
     
     default:

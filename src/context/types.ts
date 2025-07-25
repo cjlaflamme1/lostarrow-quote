@@ -26,7 +26,6 @@ export interface QuoteState {
   islandLength: number;
   islandWidth: number;
   cabinetFinish: 'painted' | 'clear-stain';
-  doorType: 'solid-slab' | 'center-panel';
   panelType: 'raised' | 'flat';
   doorProfile: 'shaker' | 'profile' | 'skinny-shaker';
   glassDoorsCount: number;
@@ -52,7 +51,6 @@ export type QuoteAction =
   | { type: 'SET_ISLAND_LENGTH'; payload: number }
   | { type: 'SET_ISLAND_WIDTH'; payload: number }
   | { type: 'SET_CABINET_FINISH'; payload: QuoteState['cabinetFinish'] }
-  | { type: 'SET_DOOR_TYPE'; payload: QuoteState['doorType'] }
   | { type: 'SET_PANEL_TYPE'; payload: QuoteState['panelType'] }
   | { type: 'SET_DOOR_PROFILE'; payload: QuoteState['doorProfile'] }
   | { type: 'SET_GLASS_DOORS_COUNT'; payload: number }

@@ -12,7 +12,6 @@ export const useQuoteCalculation = (state: QuoteState): CalculatedValues => {
     state.islandLength,
     state.islandWidth,
     state.cabinetFinish,
-    state.doorType,
     state.panelType,
     state.doorProfile,
     state.glassDoorsCount

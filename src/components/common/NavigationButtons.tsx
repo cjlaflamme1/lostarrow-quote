@@ -21,11 +21,9 @@ export const NavigationButtons: React.FC<NavigationButtonsProps> = ({
   onSubmit,
   isLoading = false
 }) => {
-  const { currentStep, canGoNext, canGoBack, goNext, goBack, state } = useQuote();
+  const { currentStep, canGoNext, canGoBack, goNext, goBack } = useQuote();
   
   const isLastStep = currentStep >= TOTAL_STEPS - 1;
-  const isFirstStep = currentStep === 0;
-  const isQuoteResultsStep = currentStep === TOTAL_STEPS - 1;
 
   const handleBack = () => {
     if (onBack) {
@@ -35,22 +33,7 @@ export const NavigationButtons: React.FC<NavigationButtonsProps> = ({
     }
   };
 
-  const handleSubmit = () => {
-    if (onSubmit) {
-      onSubmit();
-    }
-  };
-
-  // Skip navigation buttons on quote results page
-  if (isQuoteResultsStep) {
-    return null;
-  }
-
-  // Special handling for panel type question (only shown if center panel doors)
-  const showPanelTypeStep = state.doorType === 'center-panel';
-  const shouldSkipPanelType = currentStep === 7 && !showPanelTypeStep;
-
-  const handleNextWithSkip = () => {
+  const handleNext = () => {
     if (onNext) {
       onNext();
     } else {
@@ -58,10 +41,21 @@ export const NavigationButtons: React.FC<NavigationButtonsProps> = ({
     }
   };
 
+  // Skip navigation buttons on quote results page
+  if (currentStep === TOTAL_STEPS - 1) {
+    return null;
+  }
+
+  const handleSubmit = () => {
+    if (onSubmit) {
+      onSubmit();
+    }
+  };
+
   return (
     <div className="flex flex-col sm:flex-row gap-4 mt-8">
       {/* Back Button */}
-      {!isFirstStep && (
+      {currentStep > 0 && (
         <button
           type="button"
           onClick={handleBack}
@@ -95,12 +89,12 @@ export const NavigationButtons: React.FC<NavigationButtonsProps> = ({
         ) : (
           <button
             type="button"
-            onClick={handleNextWithSkip}
-            disabled={!canGoNext() || isLoading}
-            className="btn btn-primary w-full"
+            onClick={handleNext}
+            disabled={!canGoNext || isLoading}
+            className="btn btn-primary flex-1"
             aria-label="Go to next step"
           >
-            {shouldSkipPanelType ? 'Continue to Profile' : nextLabel} →
+            {nextLabel} →
           </button>
         )}
       </div>

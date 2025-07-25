@@ -44,7 +44,6 @@ export const HiddenFormSubmission: React.FC<HiddenFormSubmissionProps> = ({ onCl
       islandLength: state.islandLength,
       islandWidth: state.islandWidth,
       cabinetFinish: state.cabinetFinish,
-      doorType: state.doorType,
       panelType: state.panelType,
       doorProfile: state.doorProfile,
       glassDoorsCount: state.glassDoorsCount,
@@ -134,7 +133,7 @@ export const HiddenFormSubmission: React.FC<HiddenFormSubmissionProps> = ({ onCl
             <div>Wall Cabinets: {state.wallCabinetLength} ft ({state.wallCabinetHeight})</div>
             {state.tallCabinetsCount > 0 && <div>Tall Cabinets: {state.tallCabinetsCount}</div>}
             {state.islandLength > 0 && <div>Island: {state.islandLength} × {state.islandWidth} ft</div>}
-            <div>Finish: {state.cabinetFinish}, Doors: {state.doorType}</div>
+            <div>Finish: {state.cabinetFinish}, Panel: {state.panelType}</div>
             {state.glassDoorsCount > 0 && <div>Glass Doors: {state.glassDoorsCount}</div>}
             <div className="font-semibold text-blue-700 mt-2">
               Estimated Range: {formatCurrency(state.calculatedValues.lowEstimate)} - {formatCurrency(state.calculatedValues.highEstimate)}
@@ -276,7 +275,6 @@ export const HiddenFormSubmission: React.FC<HiddenFormSubmissionProps> = ({ onCl
           <input type="hidden" name="islandLength" value={state.islandLength} />
           <input type="hidden" name="islandWidth" value={state.islandWidth} />
           <input type="hidden" name="cabinetFinish" value={state.cabinetFinish} />
-          <input type="hidden" name="doorType" value={state.doorType} />
           <input type="hidden" name="panelType" value={state.panelType} />
           <input type="hidden" name="doorProfile" value={state.doorProfile} />
           <input type="hidden" name="glassDoorsCount" value={state.glassDoorsCount} />

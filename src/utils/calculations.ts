@@ -3,9 +3,9 @@ import type { QuoteState, CalculatedValues } from '../context/types';
 export const getHeightMultiplier = (height: QuoteState['wallCabinetHeight']): number => {
   switch (height) {
     case 'h30': return 1;
-    case 'h36': return 1.25;
-    case 'h40': return 1.5;
-    case 'h42plus': return 2;
+    case 'h36': return 1;
+    case 'h40': return 1.25;
+    case 'h42plus': return 1.75;
     default: return 1;
   }
 };
@@ -49,18 +49,13 @@ export const calculateQuote = (state: QuoteState): CalculatedValues => {
   const finishMultiplier = state.cabinetFinish === 'painted' ? 1.1 : 1;
   const I = H * finishMultiplier;
   
-  // Apply door type multiplier
-  const doorMultiplier = state.doorType === 'center-panel' ? 1.1 : 1;
-  const J = I * doorMultiplier;
-  
-  // Apply panel type multiplier (only if center panel)
-  const panelMultiplier = 
-    state.doorType === 'center-panel' && state.panelType === 'raised' ? 1.05 : 1;
-  const K = J * panelMultiplier;
+  // Apply panel type multiplier (assuming center panel doors)
+  const panelMultiplier = state.panelType === 'raised' ? 1.05 : 1;
+  const J = I * panelMultiplier;
   
   // Apply profile multiplier
   const profileMultiplier = getProfileMultiplier(state.doorProfile);
-  const L = K * profileMultiplier;
+  const L = J * profileMultiplier;
   
   // Glass doors (Number x A x 0.25 = M)
   const M = state.glassDoorsCount * A * 0.25;
@@ -78,7 +73,7 @@ export const calculateQuote = (state: QuoteState): CalculatedValues => {
     H: Math.round(H * 100) / 100,
     I: Math.round(I * 100) / 100,
     J: Math.round(J * 100) / 100,
-    K: Math.round(K * 100) / 100,
+    K: Math.round(J * 100) / 100, // Set K = J since we're not using K step anymore
     L: Math.round(L * 100) / 100,
     M: Math.round(M * 100) / 100,
     N: Math.round(N * 100) / 100,
