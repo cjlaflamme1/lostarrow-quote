@@ -83,28 +83,28 @@ export const QuoteResults: React.FC = () => {
           
           <div className="space-y-3 text-sm">
             <div className="grid grid-cols-2 gap-4">
-              <div>A. Price per foot:</div>
+              <div>Price per foot:</div>
               <div className="font-medium">{formatCurrency(state.pricePerFoot)}</div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div>B. Base cabinets ({state.baseCabinetLength} ft × A):</div>
+              <div>Base cabinets ({state.baseCabinetLength} ft):</div>
               <div className="font-medium">{formatCurrency(calc.B)}</div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div>C. Wall cabinets base ({state.wallCabinetLength} ft × A):</div>
+              <div>Wall cabinets base ({state.wallCabinetLength} ft):</div>
               <div className="font-medium">{formatCurrency(calc.C)}</div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div>D. Wall cabinets adjusted (C × height multiplier):</div>
+              <div>Wall cabinets with height adjustment:</div>
               <div className="font-medium">{formatCurrency(calc.D)}</div>
             </div>
             
             {state.tallCabinetsCount > 0 && (
               <div className="grid grid-cols-2 gap-4">
-                <div>E. Tall cabinets ({state.tallCabinetsCount} × A × 6):</div>
+                <div>Tall cabinets ({state.tallCabinetsCount} units):</div>
                 <div className="font-medium">{formatCurrency(calc.E)}</div>
               </div>
             )}
@@ -112,45 +112,45 @@ export const QuoteResults: React.FC = () => {
             {state.islandLength > 0 && (
               <>
                 <div className="grid grid-cols-2 gap-4">
-                  <div>F. Island length ({state.islandLength} ft × A):</div>
+                  <div>Island length ({state.islandLength} ft):</div>
                   <div className="font-medium">{formatCurrency(calc.F)}</div>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <div>G. Island total (F × width multiplier):</div>
+                  <div>Island total with width adjustment:</div>
                   <div className="font-medium">{formatCurrency(calc.G)}</div>
                 </div>
               </>
             )}
             
             <div className="border-t pt-3 grid grid-cols-2 gap-4 font-medium">
-              <div>H. Subtotal (B + D + E + G):</div>
+              <div>Subtotal (base + wall + tall + island):</div>
               <div>{formatCurrency(calc.H)}</div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div>I. After finish ({state.cabinetFinish}):</div>
+              <div>After finish ({state.cabinetFinish}):</div>
               <div className="font-medium">{formatCurrency(calc.I)}</div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div>J. After panel type ({state.panelType}):</div>
+              <div>After panel type ({state.panelType}):</div>
               <div className="font-medium">{formatCurrency(calc.J)}</div>
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <div>L. After profile ({state.doorProfile}):</div>
+              <div>After profile ({state.doorProfile}):</div>
               <div className="font-medium">{formatCurrency(calc.L)}</div>
             </div>
             
             {state.glassDoorsCount > 0 && (
               <div className="grid grid-cols-2 gap-4">
-                <div>M. Glass doors ({state.glassDoorsCount} × A × 0.25):</div>
+                <div>Glass doors ({state.glassDoorsCount} doors):</div>
                 <div className="font-medium">{formatCurrency(calc.M)}</div>
               </div>
             )}
             
             <div className="border-t pt-3 grid grid-cols-2 gap-4 font-bold text-lg">
-              <div>N. Total (L + M):</div>
+              <div>Total project cost:</div>
               <div>{formatCurrency(calc.N)}</div>
             </div>
             
